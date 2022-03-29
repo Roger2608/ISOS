@@ -35,7 +35,7 @@ public class BatchConfig {
 	@Bean
 	public FlatFileItemReader<LenguaSordoRecipient> reader(){
 		return new FlatFileItemReaderBuilder<LenguaSordoRecipient>()
-			   .name("personaItemReader")
+			   .name("LssItemReader")
 			   .resource(new FileSystemResource("src/main/resources/LssFileLoadData.csv"))
 			   .linesToSkip(1)
 			   .delimited()
@@ -70,7 +70,7 @@ public class BatchConfig {
 	@Bean
 	public Step step1() {
 		return stepBuilderFactory.get("ETL-file-load")
-				.<LenguaSordoRecipient, LenguaSordo> chunk(4)
+				.<LenguaSordoRecipient, LenguaSordo> chunk(2)
 				.reader(reader())
 				.processor(processor())
 				.writer(writer())
