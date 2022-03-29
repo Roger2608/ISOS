@@ -22,5 +22,6 @@ public enum Category {
 	RELIGION,
 	VERBO,
 	VERDURA,
-	VESTIMENTA;
+	VESTIMENTA,
+	NOT_CATEGORY;
 }
