@@ -5,16 +5,16 @@ import java.time.LocalDateTime;
 import org.springframework.batch.item.ItemProcessor;
 
 import com.isos.lss.app.batch.model.recipient.LenguaSordoRecipient;
-import com.isos.lss.app.model.category.LenguaSordo;
+import com.isos.lss.app.conection.db.model.IsosLssCategorys;
 import com.isos.lss.app.model.enums.Category;
 import com.isos.lss.app.model.enums.SubCategory;
 
-public class LssItemProcessor implements ItemProcessor<LenguaSordoRecipient, LenguaSordo> {
+public class LssItemProcessor implements ItemProcessor<LenguaSordoRecipient, IsosLssCategorys> {
 
 	@Override
-	public LenguaSordo process(LenguaSordoRecipient item) throws Exception {
+	public IsosLssCategorys process(LenguaSordoRecipient item) throws Exception {
 
-		LenguaSordo lenguaSordo = new LenguaSordo();
+		IsosLssCategorys lenguaSordo = new IsosLssCategorys();
 		lenguaSordo.setId(item.getId());
 		lenguaSordo.setName(item.getName());
 		lenguaSordo.setShort_description(item.getShort_description());

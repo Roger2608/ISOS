@@ -17,7 +17,7 @@ import org.springframework.core.io.FileSystemResource;
 import com.isos.lss.app.batch.model.recipient.LenguaSordoRecipient;
 import com.isos.lss.app.batch.processor.LssItemProcessor;
 import com.isos.lss.app.batch.writer.LssItemWriter;
-import com.isos.lss.app.model.category.LenguaSordo;
+import com.isos.lss.app.conection.db.model.IsosLssCategorys;
 
 @Configuration
 @EnableBatchProcessing
@@ -28,10 +28,7 @@ public class BatchConfig {
 	
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
-	/*
-	@Value("batch.headers")
-	String headers;
-	*/
+
 	@Bean
 	public FlatFileItemReader<LenguaSordoRecipient> reader(){
 		return new FlatFileItemReaderBuilder<LenguaSordoRecipient>()
@@ -41,7 +38,6 @@ public class BatchConfig {
 			   .delimited()
 			   .delimiter("|")
 			   .names(new String[] {"id", "name", "short_description","long_description","image","category","sub_category"})
-//			   .names(returnHeaders())
 			   .fieldSetMapper(new BeanWrapperFieldSetMapper<LenguaSordoRecipient>() {{
 				   setTargetType(LenguaSordoRecipient.class);
 			   }})
@@ -70,19 +66,11 @@ public class BatchConfig {
 	@Bean
 	public Step step1() {
 		return stepBuilderFactory.get("ETL-file-load")
-				.<LenguaSordoRecipient, LenguaSordo> chunk(2)
+				.<LenguaSordoRecipient, IsosLssCategorys> chunk(2)
 				.reader(reader())
 				.processor(processor())
 				.writer(writer())
 				.build();
 	}
-/*
-	public String getHeaders() {
-		return headers;
-	}
 	
-	public String[] returnHeaders() {
-		return headers.split(",");
-	}
-	*/
 }
