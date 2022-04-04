@@ -1,25 +1,21 @@
-package com.isos.lss.app.model.category;
+package com.isos.lss.app.batch.model.recipient;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
-import com.isos.lss.app.model.enums.Category;
-import com.isos.lss.app.model.enums.SubCategory;
-
-public class LenguaSordo implements Serializable {
-
+public class LenguaSordoRecipient implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
+	
 	private String id;
 	private String name;
 	private String short_description;
 	private String long_description;
 	private String imagen;
-	private Category categoria;
-	private SubCategory sub_category;
-	private LocalDateTime last_update;
-
-	public LenguaSordo(String id, String name, String short_description, String long_description, String imagen,
-			Category categoria, SubCategory sub_category, LocalDateTime last_update) {
+	private String categoria;
+	private String sub_category;
+	
+	public LenguaSordoRecipient(String id, String name, String short_description, String long_description,
+			String imagen, String categoria, String sub_category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,10 +24,9 @@ public class LenguaSordo implements Serializable {
 		this.imagen = imagen;
 		this.categoria = categoria;
 		this.sub_category = sub_category;
-		this.last_update = last_update;
 	}
 
-	public LenguaSordo() {
+	public LenguaSordoRecipient() {
 		super();
 	}
 
@@ -75,34 +70,27 @@ public class LenguaSordo implements Serializable {
 		this.imagen = imagen;
 	}
 
-	public Category getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Category categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
-	public SubCategory getSub_category() {
+	public String getSub_category() {
 		return sub_category;
 	}
 
-	public void setSub_category(SubCategory sub_category) {
+	public void setSub_category(String sub_category) {
 		this.sub_category = sub_category;
-	}
-
-	public LocalDateTime getLast_update() {
-		return last_update;
-	}
-
-	public void setLast_update(LocalDateTime last_update) {
-		this.last_update = last_update;
 	}
 
 	@Override
 	public String toString() {
-		return "LenguaSordo [id=" + id + ", name=" + name + ", short_description=" + short_description
+		return "LenguaSordoRecipient [id=" + id + ", name=" + name + ", short_description=" + short_description
 				+ ", long_description=" + long_description + ", imagen=" + imagen + ", categoria=" + categoria
-				+ ", sub_category=" + sub_category + ", last_update=" + last_update + "]";
+				+ ", sub_category=" + sub_category + "]";
 	}
+
 }

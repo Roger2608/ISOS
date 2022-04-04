@@ -1,6 +1,8 @@
 package com.isos.lss.app.conection.db.dao;
 
-import static com.isos.lss.app.conection.db.util.Constants.*;
+import static com.isos.lss.app.conection.db.util.Constants.BEGGIN_METHOD;
+import static com.isos.lss.app.conection.db.util.Constants.END_METHOD;
+import static com.isos.lss.app.conection.db.util.Constants.TRUNCATED_METHOD;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import com.isos.lss.app.conection.db.model.IsosLssCategorys;
 import com.isos.lss.app.conection.db.repository.LssAbstractRepository;
 import com.isos.lss.app.model.category.LenguaSordo;
 
@@ -23,7 +26,7 @@ public class LssAbstractDaoImpl implements LssAbstractDao {
 	LssAbstractRepository repository;
 
 	@Override
-	public void saveAll(List<LenguaSordo> data) {
+	public void saveAll(List<IsosLssCategorys> data) {
 		final String METHOD = "saveAll";
 
 		LOGGER.info(BEGGIN_METHOD, METHOD, data);
@@ -34,12 +37,26 @@ public class LssAbstractDaoImpl implements LssAbstractDao {
 		}
 		LOGGER.info(END_METHOD, METHOD);
 	}
+	
+	@Override
+	public void saveAll(IsosLssCategorys data) {
+		final String METHOD = "saveAll";
+
+		LOGGER.info(BEGGIN_METHOD, METHOD, data);
+		try {
+			repository.save(data);
+		} catch (Exception e) {
+			LOGGER.error(TRUNCATED_METHOD, METHOD, e.getMessage());
+		}
+		LOGGER.info(END_METHOD, METHOD);
+	}
+
 
 	@Override
-	public List<?> findAll() {
+	public List<IsosLssCategorys> findAll() {
 		final String METHOD = "findAll";
 		LOGGER.info(BEGGIN_METHOD, METHOD, null);
-		List<?> lista = null;
+		List<IsosLssCategorys> lista = null;
 		try {
 			lista = repository.findAll();
 		} catch (Exception e) {
@@ -50,16 +67,16 @@ public class LssAbstractDaoImpl implements LssAbstractDao {
 	}
 
 	@Override
-	public List<LenguaSordo> findBy(Object indication) {
+	public List<? extends LenguaSordo> findBy(Object indication) {
 		final String METHOD = "findBy";
 		LOGGER.info(BEGGIN_METHOD, METHOD, indication);
-		List<LenguaSordo> lista = null;
+		List<IsosLssCategorys> lista = null;
 		try {
 			ExampleMatcher customExampleMatcher = ExampleMatcher.matchingAny()
 					.withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
 					.withMatcher("category", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
 
-			Example<LenguaSordo> example = Example.of((LenguaSordo)indication, customExampleMatcher);
+			Example<IsosLssCategorys> example = Example.of((IsosLssCategorys)indication, customExampleMatcher);
 
 			lista = repository.findAll(example);
 		} catch (Exception e) {
