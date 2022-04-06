@@ -3,8 +3,6 @@ spring:
   data:
     mongodb:
 #      uri: "mongodb+srv://ricm2608:jtkGdPdt3rnoWXf2@clusterlenguajesenas.052ab.mongodb.net/LenguajeSenas?retryWrites=true&w=majority&serverSelectionTimeoutMS=200&connectTimeoutMS=200&socketTimeoutMS=200&maxPoolSize=200"
-#      uri: "mongodb+srv://admin:Ptd8HGadAf1EHbXo@isos.052ab.mongodb.net/LSS?retryWrites=true&w=majority&maxPoolSize=200" 
-      uri: "mongodb+srv://ricm2608:jtkGdPdt3rnoWXf2@isos.052ab.mongodb.net/LenguajeSenas?retryWrites=true&w=majority" 
-      database: "LenguajeSenas"
-      repositories:
-        type: auto
+      uri: mongodb+srv://ricm2608:jtkGdPdt3rnoWXf2@isos.052ab.mongodb.net/LSS?retryWrites=true&w=majority&serverSelectionTimeoutMS=200&connectTimeoutMS=200&socketTimeoutMS=200&maxPoolSize=200 
+      database: LSS
+      repositories:        type: auto

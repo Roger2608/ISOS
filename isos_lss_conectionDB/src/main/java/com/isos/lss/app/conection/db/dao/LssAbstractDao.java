@@ -10,8 +10,10 @@ public interface LssAbstractDao {
 
 	public void saveAll(IsosLssCategorys data);
 
-	public List<?> findAll();
+	public List<IsosLssCategorys> findAll();
 
-	public List<?> findBy(Object indication);
+	public List<IsosLssCategorys> findBy(Object indication);
+
+	IsosLssCategorys findByName(String name);
 
 }

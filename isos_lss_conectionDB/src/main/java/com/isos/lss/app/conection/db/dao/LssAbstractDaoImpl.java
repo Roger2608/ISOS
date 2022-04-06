@@ -67,7 +67,7 @@ public class LssAbstractDaoImpl implements LssAbstractDao {
 	}
 
 	@Override
-	public List<? extends LenguaSordo> findBy(Object indication) {
+	public List<IsosLssCategorys> findBy(Object indication) {
 		final String METHOD = "findBy";
 		LOGGER.info(BEGGIN_METHOD, METHOD, indication);
 		List<IsosLssCategorys> lista = null;
@@ -79,6 +79,20 @@ public class LssAbstractDaoImpl implements LssAbstractDao {
 			Example<IsosLssCategorys> example = Example.of((IsosLssCategorys)indication, customExampleMatcher);
 
 			lista = repository.findAll(example);
+		} catch (Exception e) {
+			LOGGER.error(TRUNCATED_METHOD, METHOD, e.getMessage());
+		}
+		LOGGER.info(END_METHOD, METHOD);
+		return lista;
+	}
+	
+	@Override
+	public IsosLssCategorys findByName(String name) {
+		final String METHOD = "findByName";
+		LOGGER.info(BEGGIN_METHOD, METHOD, name);
+		IsosLssCategorys lista = null;
+		try {
+			lista = repository.findByName(name);
 		} catch (Exception e) {
 			LOGGER.error(TRUNCATED_METHOD, METHOD, e.getMessage());
 		}

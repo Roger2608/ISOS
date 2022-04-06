@@ -7,5 +7,8 @@ import com.isos.lss.app.conection.db.model.IsosLssCategorys;
 
 @Repository
 public interface LssAbstractRepository extends MongoRepository<IsosLssCategorys, String>{
+	
+	IsosLssCategorys findByName(String name);
+	
 
 }
