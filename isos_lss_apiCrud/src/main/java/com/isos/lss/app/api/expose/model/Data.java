@@ -3,6 +3,8 @@ package com.isos.lss.app.api.expose.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Data {
 
 	private String id;
@@ -24,6 +27,5 @@ public class Data {
 	private String categoria;
 	private String sub_category;
 	private LocalDateTime last_update;
-	private List<Data> family;
-
+	private List<?> family;
 }

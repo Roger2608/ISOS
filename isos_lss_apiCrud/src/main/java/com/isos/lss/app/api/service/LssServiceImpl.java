@@ -23,7 +23,7 @@ public class LssServiceImpl implements LssService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Data> findAll() {
-		abstractDao.saveAll(new IsosLssCategorys("asd3", "adssadasd", "asdasdas", "asdasd", "asdasdasd", Category.NOT_CATEGORY, SubCategory.NOT_SUB_CATEGORY, LocalDateTime.now()));
+//		abstractDao.saveAll(new IsosLssCategorys("asd3", "adssadasd", "asdasdas", "asdasd", "asdasdasd", Category.NOT_CATEGORY, SubCategory.NOT_SUB_CATEGORY, LocalDateTime.now()));
 		
 //		return abstractDao.findAll().forEach(a -> ExposeWebUtil.transformtoData(a));
 		
